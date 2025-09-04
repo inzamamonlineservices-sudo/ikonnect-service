@@ -169,7 +169,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <Card key={index} className="service-card hover-lift cursor-pointer group bg-card border border-border/50" data-testid={`service-card-${index}`}>
-                <CardContent className="p-8 text-[#f5f6f7]">
+                <CardContent className="p-8 text-[#f5f6f7] bg-[#f0f1f2]">
                   <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/30 transition-colors">
                     <service.icon className="w-8 h-8 text-primary" />
                   </div>
