@@ -1,0 +1,131 @@
+I want to create a modern, sleek, and innovative multi-page website for my digital agency Ikonnect Service. Please follow best practices for digital service agency websites with a focus on engagement, credibility, and conversion optimization.
+
+Business Information:
+
+Agency Name: Ikonnect Service
+
+Services:
+
+Data Automation
+
+Web Development
+
+AI Chatbots & Integration
+
+Web Extraction
+
+Graphic Designing
+
+Website Goals:
+
+Communicate professionalism and innovation.
+
+Showcase services with clarity and detail.
+
+Build trust and credibility through portfolio and case studies.
+
+Capture leads via clear calls-to-action and contact forms.
+
+Provide engaging experiences with animations, 3D objects, and smooth transitions.
+
+Required Pages:
+
+Home Page
+
+Hero section with engaging headline, 3D/animated visuals, and CTA button.
+
+Short intro about Ikonnect Service.
+
+Highlight core services with icons/illustrations.
+
+Showcase portfolio preview and testimonials.
+
+Call-to-action for consultation or contact.
+
+Services Page (Hub)
+
+Overview of all services with clickable cards leading to individual service pages.
+
+Modern animations on hover.
+
+Individual Service Pages (Data Automation, Web Development, AI Chatbots & Integration, Web Extraction, Graphic Designing)
+
+Service-specific hero banner with animations/3D visuals.
+
+Explain the service clearly with benefits, process, and use cases.
+
+Include visuals/diagrams where possible.
+
+CTA to contact or request quote.
+
+About Us Page
+
+Company story, mission, and vision.
+
+Highlight innovation and creativity.
+
+Introduce the team with professional photos and animated hover effects.
+
+Portfolio Section
+
+Portfolio hub page with filterable projects (by service type).
+
+Each portfolio item should link to a dedicated case study page with project overview, process, visuals/mockups, and results.
+
+Blog Page
+
+Clean blog listing with categories (AI, Web Dev, Design, Automation, Industry Insights).
+
+Blog post pages optimized for readability (SEO-friendly structure, featured images, share buttons).
+
+Contact Page
+
+Modern form with fields: Name, Email, Service Interest, Message.
+
+Include map (if relevant), phone number, and business email.
+
+Prominent CTA to “Let’s Work Together”.
+
+Design & UI/UX Best Practices:
+
+Modern and Sleek: Minimalistic yet futuristic design.
+
+Animations: Smooth micro-interactions, hover effects, and scroll-based animations.
+
+3D Objects & Effects: Incorporate modern WebGL or Lottie animations.
+
+Color Palette: Bold, contrasting yet professional colors (e.g., dark mode with neon highlights).
+
+Typography: Clean, modern sans-serif fonts with strong hierarchy.
+
+Navigation: Sticky navbar with clear structure and dropdown menus.
+
+Footer: Include quick links, social media, newsletter signup, and copyright.
+
+Mobile-first design: Fully responsive, optimized for all devices.
+
+Accessibility: WCAG-compliant fonts, contrast, and alt tags.
+
+Technical & SEO Best Practices:
+
+Fast loading speed (optimized images, animations, and scripts).
+
+SEO-friendly structure (H1, H2, meta tags, schema markup).
+
+SSL-secured (HTTPS).
+
+Blog should be easy to manage (CMS-friendly).
+
+Integration with analytics tools (Google Analytics, Search Console).
+
+Social media sharing previews (Open Graph tags).
+
+Extra Features to Include:
+
+Sticky CTA buttons (like “Get a Quote” or “Contact Us”).
+
+Testimonials/Reviews carousel.
+
+Newsletter signup with email automation integration.
+
+Chatbot widget (can be AI-powered later).
