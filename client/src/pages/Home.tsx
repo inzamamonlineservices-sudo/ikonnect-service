@@ -185,7 +185,7 @@ export default function Home() {
             
             {/* Custom Solutions Card */}
             <Card className="service-card hover-lift cursor-pointer group bg-card border-2 border-primary/30" data-testid="custom-solutions-card">
-              <CardContent className="p-8">
+              <CardContent className="p-8 bg-[#f0f1f2]">
                 <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/30 transition-colors">
                   <Lightbulb className="w-8 h-8 text-primary" />
                 </div>
