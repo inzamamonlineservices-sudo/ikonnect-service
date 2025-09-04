@@ -170,14 +170,14 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="service-card hover-lift cursor-pointer group" data-testid={`service-card-${index}`}>
+              <Card key={index} className="service-card hover-lift cursor-pointer group bg-card border border-border/50" data-testid={`service-card-${index}`}>
                 <CardContent className="p-8">
-                  <div className={`w-16 h-16 bg-${service.color.split('-')[1]}/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-${service.color.split('-')[1]}/30 transition-colors`}>
-                    <service.icon className={`w-8 h-8 ${service.color}`} />
+                  <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/30 transition-colors">
+                    <service.icon className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-card-foreground">{service.name}</h3>
+                  <h3 className="text-2xl font-bold mb-4 text-foreground">{service.name}</h3>
                   <p className="text-muted-foreground mb-6">{service.description}</p>
-                  <Link href={service.href} className={`flex items-center ${service.color} font-medium group-hover:translate-x-2 transition-transform`}>
+                  <Link href={service.href} className="flex items-center text-primary font-medium group-hover:translate-x-2 transition-transform">
                     Learn More
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
@@ -186,12 +186,12 @@ export default function Home() {
             ))}
             
             {/* Custom Solutions Card */}
-            <Card className="service-card hover-lift cursor-pointer group border-2 border-primary/30" data-testid="custom-solutions-card">
+            <Card className="service-card hover-lift cursor-pointer group bg-card border-2 border-primary/30" data-testid="custom-solutions-card">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/30 transition-colors">
                   <Lightbulb className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-card-foreground">Custom Solutions</h3>
+                <h3 className="text-2xl font-bold mb-4 text-foreground">Custom Solutions</h3>
                 <p className="text-muted-foreground mb-6">Need something unique? We create tailored digital solutions that perfectly match your specific business requirements and goals.</p>
                 <Link href="/contact" className="flex items-center text-primary font-medium group-hover:translate-x-2 transition-transform">
                   Contact Us
@@ -217,7 +217,7 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {portfolioItems.slice(0, 3).map((item: any, index: number) => (
-              <Card key={item.id} className="overflow-hidden hover-lift cursor-pointer group" data-testid={`portfolio-item-${index}`}>
+              <Card key={item.id} className="overflow-hidden hover-lift cursor-pointer group bg-card border border-border/50" data-testid={`portfolio-item-${index}`}>
                 <div className="aspect-video overflow-hidden">
                   <img 
                     src={item.imageUrl} 
@@ -230,7 +230,7 @@ export default function Home() {
                     <Badge variant="secondary">{item.category.replace('-', ' ')}</Badge>
                     <span className="text-sm text-muted-foreground">{item.year}</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-card-foreground">{item.title}</h3>
+                  <h3 className="text-xl font-bold mb-2 text-foreground">{item.title}</h3>
                   <p className="text-muted-foreground mb-4">{item.description}</p>
                   <Link href={`/portfolio/${item.id}`} className="flex items-center text-primary font-medium group-hover:translate-x-2 transition-transform">
                     View Case Study
@@ -263,16 +263,16 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial: any, index: number) => (
-              <Card key={testimonial.id} className="hover-lift" data-testid={`testimonial-${index}`}>
+              <Card key={testimonial.id} className="hover-lift bg-card border border-border/50" data-testid={`testimonial-${index}`}>
                 <CardContent className="p-8">
                   <div className="flex items-center mb-4">
-                    <div className="flex text-chart-3">
+                    <div className="flex text-primary">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-5 h-5 fill-current" />
                       ))}
                     </div>
                   </div>
-                  <p className="text-card-foreground mb-6 text-lg leading-relaxed">
+                  <p className="text-foreground mb-6 text-lg leading-relaxed">
                     "{testimonial.content}"
                   </p>
                   <div className="flex items-center">
@@ -284,7 +284,7 @@ export default function Home() {
                       />
                     )}
                     <div>
-                      <div className="font-semibold text-card-foreground">{testimonial.name}</div>
+                      <div className="font-semibold text-foreground">{testimonial.name}</div>
                       <div className="text-muted-foreground text-sm">{testimonial.position}, {testimonial.company}</div>
                     </div>
                   </div>
