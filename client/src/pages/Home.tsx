@@ -155,7 +155,7 @@ export default function Home() {
         </div>
       </section>
       {/* Services Section */}
-      <section className="py-20">
+      <section className="py-20 bg-gradient-to-br from-background via-muted/30 to-background">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6" data-testid="services-title">
@@ -168,35 +168,37 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="service-card hover-lift cursor-pointer group bg-card border border-border/50" data-testid={`service-card-${index}`}>
-                <CardContent className="p-8 text-[#f5f6f7] bg-[#f0f1f2]">
+              <div key={index} className="group relative" data-testid={`service-card-${index}`}>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl transform group-hover:scale-105 transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
+                <div className="relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group-hover:border-primary/30">
                   <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/30 transition-colors">
                     <service.icon className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-foreground">{service.name}</h3>
-                  <p className="text-muted-foreground mb-6">{service.description}</p>
-                  <Link href={service.href} className="flex items-center text-primary font-medium group-hover:translate-x-2 transition-transform">
+                  <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">{service.name}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
+                  <Link href={service.href} className="inline-flex items-center text-primary font-medium group-hover:translate-x-2 transition-all duration-300 hover:text-primary/80">
                     Learn More
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:ml-3 transition-all" />
                   </Link>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
             
             {/* Custom Solutions Card */}
-            <Card className="service-card hover-lift cursor-pointer group bg-card border-2 border-primary/30" data-testid="custom-solutions-card">
-              <CardContent className="p-8 bg-[#f0f1f2]">
-                <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/30 transition-colors">
+            <div className="group relative" data-testid="custom-solutions-card">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl transform group-hover:scale-105 transition-all duration-300"></div>
+              <div className="relative bg-card/90 backdrop-blur-sm border-2 border-primary/40 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group-hover:border-primary/60">
+                <div className="w-16 h-16 bg-primary/30 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/40 transition-colors">
                   <Lightbulb className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-foreground">Custom Solutions</h3>
-                <p className="text-muted-foreground mb-6">Need something unique? We create tailored digital solutions that perfectly match your specific business requirements and goals.</p>
-                <Link href="/contact" className="flex items-center text-primary font-medium group-hover:translate-x-2 transition-transform">
+                <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">Custom Solutions</h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed">Need something unique? We create tailored digital solutions that perfectly match your specific business requirements and goals.</p>
+                <Link href="/contact" className="inline-flex items-center text-primary font-medium group-hover:translate-x-2 transition-all duration-300 hover:text-primary/80">
                   Contact Us
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:ml-3 transition-all" />
                 </Link>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
