@@ -1,5 +1,6 @@
 import { useRoute } from "wouter";
 import { useQuery } from "@tanstack/react-query";
+import type { BlogPost as BlogPostType } from "@shared/schema";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -25,12 +26,12 @@ export default function BlogPost() {
   const postSlug = params?.slug;
   const { toast } = useToast();
 
-  const { data: post, isLoading } = useQuery({
-    queryKey: ["/api/blog", postSlug],
+  const { data: post, isLoading } = useQuery<BlogPostType>({
+    queryKey: [`/api/blog/${postSlug}`],
     enabled: !!postSlug,
   });
 
-  const { data: allPosts = [] } = useQuery({
+  const { data: allPosts = [] } = useQuery<BlogPostType[]>({
     queryKey: ["/api/blog"],
   });
 
@@ -78,7 +79,7 @@ export default function BlogPost() {
   }
 
   const relatedPosts = allPosts
-    .filter((p: any) => p.slug !== post.slug && p.category === post.category)
+    .filter((p: BlogPostType) => p.slug !== post.slug && p.category === post.category)
     .slice(0, 3);
 
   const shareUrl = typeof window !== 'undefined' ? window.location.href : '';

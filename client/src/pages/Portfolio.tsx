@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
+import type { PortfolioItem } from "@shared/schema";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -18,19 +19,19 @@ export default function Portfolio() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
 
-  const { data: portfolioItems = [], isLoading } = useQuery({
+  const { data: portfolioItems = [], isLoading } = useQuery<PortfolioItem[]>({
     queryKey: ["/api/portfolio"],
   });
 
   const filters = [
     { id: "all", name: "All Projects", count: portfolioItems.length },
-    { id: "web-dev", name: "Web Development", count: portfolioItems.filter((item: any) => item.category === "web-dev").length },
-    { id: "automation", name: "Automation", count: portfolioItems.filter((item: any) => item.category === "automation").length },
-    { id: "ai", name: "AI Solutions", count: portfolioItems.filter((item: any) => item.category === "ai").length },
-    { id: "design", name: "Design", count: portfolioItems.filter((item: any) => item.category === "design").length }
+    { id: "web-dev", name: "Web Development", count: portfolioItems.filter((item: PortfolioItem) => item.category === "web-dev").length },
+    { id: "automation", name: "Automation", count: portfolioItems.filter((item: PortfolioItem) => item.category === "automation").length },
+    { id: "ai", name: "AI Solutions", count: portfolioItems.filter((item: PortfolioItem) => item.category === "ai").length },
+    { id: "design", name: "Design", count: portfolioItems.filter((item: PortfolioItem) => item.category === "design").length }
   ];
 
-  const filteredItems = portfolioItems.filter((item: any) => {
+  const filteredItems = portfolioItems.filter((item: PortfolioItem) => {
     const matchesFilter = activeFilter === "all" || item.category === activeFilter;
     const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||

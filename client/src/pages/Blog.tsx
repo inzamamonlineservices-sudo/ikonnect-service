@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
+import type { BlogPost } from "@shared/schema";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -20,20 +21,20 @@ export default function Blog() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
 
-  const { data: blogPosts = [], isLoading } = useQuery({
+  const { data: blogPosts = [], isLoading } = useQuery<BlogPost[]>({
     queryKey: ["/api/blog"],
   });
 
   const categories = [
     { id: "all", name: "All Posts", count: blogPosts.length },
-    { id: "AI", name: "AI & Machine Learning", count: blogPosts.filter((post: any) => post.category === "AI").length },
-    { id: "Web Dev", name: "Web Development", count: blogPosts.filter((post: any) => post.category === "Web Dev").length },
-    { id: "Design", name: "Design", count: blogPosts.filter((post: any) => post.category === "Design").length },
-    { id: "Automation", name: "Automation", count: blogPosts.filter((post: any) => post.category === "Automation").length },
-    { id: "Industry Insights", name: "Industry Insights", count: blogPosts.filter((post: any) => post.category === "Industry Insights").length }
+    { id: "AI", name: "AI & Machine Learning", count: blogPosts.filter((post: BlogPost) => post.category === "AI").length },
+    { id: "Web Dev", name: "Web Development", count: blogPosts.filter((post: BlogPost) => post.category === "Web Dev").length },
+    { id: "Design", name: "Design", count: blogPosts.filter((post: BlogPost) => post.category === "Design").length },
+    { id: "Automation", name: "Automation", count: blogPosts.filter((post: BlogPost) => post.category === "Automation").length },
+    { id: "Industry Insights", name: "Industry Insights", count: blogPosts.filter((post: BlogPost) => post.category === "Industry Insights").length }
   ];
 
-  const filteredPosts = blogPosts.filter((post: any) => {
+  const filteredPosts = blogPosts.filter((post: BlogPost) => {
     const matchesCategory = activeCategory === "all" || post.category === activeCategory;
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||

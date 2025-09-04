@@ -1,11 +1,13 @@
 import { useRoute } from "wouter";
 import { useQuery } from "@tanstack/react-query";
+import type { PortfolioItem } from "@shared/schema";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import {
   ArrowLeft,
+  ArrowRight,
   Calendar,
   User,
   TrendingUp,
@@ -20,12 +22,12 @@ export default function PortfolioDetail() {
   const [, params] = useRoute("/portfolio/:id");
   const projectId = params?.id;
 
-  const { data: project, isLoading } = useQuery({
-    queryKey: ["/api/portfolio", projectId],
+  const { data: project, isLoading } = useQuery<PortfolioItem>({
+    queryKey: [`/api/portfolio/${projectId}`],
     enabled: !!projectId,
   });
 
-  const { data: allProjects = [] } = useQuery({
+  const { data: allProjects = [] } = useQuery<PortfolioItem[]>({
     queryKey: ["/api/portfolio"],
   });
 
@@ -57,7 +59,7 @@ export default function PortfolioDetail() {
   }
 
   const relatedProjects = allProjects
-    .filter((item: any) => item.id !== project.id && item.category === project.category)
+    .filter((item: PortfolioItem) => item.id !== project.id && item.category === project.category)
     .slice(0, 3);
 
   return (

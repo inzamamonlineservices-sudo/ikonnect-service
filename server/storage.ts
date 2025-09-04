@@ -116,7 +116,13 @@ export class MemStorage implements IStorage {
       const portfolioItem: PortfolioItem = {
         ...item,
         id,
-        createdAt: new Date()
+        createdAt: new Date(),
+        results: item.results || null,
+        client: item.client || null,
+        featured: item.featured ?? false,
+        tags: item.tags || [],
+        process: item.process || null,
+        technologies: item.technologies || []
       };
       this.portfolioItems.set(id, portfolioItem);
     });
@@ -155,7 +161,9 @@ export class MemStorage implements IStorage {
         ...post,
         id,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        tags: post.tags || [],
+        published: post.published ?? false
       };
       this.blogPosts.set(id, blogPost);
     });
@@ -196,7 +204,10 @@ export class MemStorage implements IStorage {
       const testimonialItem: Testimonial = {
         ...testimonial,
         id,
-        createdAt: new Date()
+        createdAt: new Date(),
+        featured: testimonial.featured ?? false,
+        imageUrl: testimonial.imageUrl || null,
+        rating: testimonial.rating || "5"
       };
       this.testimonials.set(id, testimonialItem);
     });
@@ -291,7 +302,13 @@ export class MemStorage implements IStorage {
     const item: PortfolioItem = {
       ...insertItem,
       id,
-      createdAt: new Date()
+      createdAt: new Date(),
+      results: insertItem.results || null,
+      client: insertItem.client || null,
+      featured: insertItem.featured ?? false,
+      tags: insertItem.tags || [],
+      process: insertItem.process || null,
+      technologies: insertItem.technologies || []
     };
     this.portfolioItems.set(id, item);
     return item;
@@ -326,7 +343,9 @@ export class MemStorage implements IStorage {
       ...insertPost,
       id,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      tags: insertPost.tags || [],
+      published: insertPost.published ?? false
     };
     this.blogPosts.set(id, post);
     return post;
@@ -350,7 +369,10 @@ export class MemStorage implements IStorage {
     const testimonial: Testimonial = {
       ...insertTestimonial,
       id,
-      createdAt: new Date()
+      createdAt: new Date(),
+      featured: insertTestimonial.featured ?? false,
+      imageUrl: insertTestimonial.imageUrl || null,
+      rating: insertTestimonial.rating || "5"
     };
     this.testimonials.set(id, testimonial);
     return testimonial;

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
+import type { PortfolioItem, Testimonial } from "@shared/schema";
 import {
   Database,
   Code,
@@ -17,14 +18,12 @@ import {
 } from "lucide-react";
 
 export default function Home() {
-  const { data: portfolioItems = [] } = useQuery({
-    queryKey: ["/api/portfolio"],
-    queryParams: { featured: "true" },
+  const { data: portfolioItems = [] } = useQuery<PortfolioItem[]>({
+    queryKey: ["/api/portfolio?featured=true"],
   });
 
-  const { data: testimonials = [] } = useQuery({
-    queryKey: ["/api/testimonials"],
-    queryParams: { featured: "true" },
+  const { data: testimonials = [] } = useQuery<Testimonial[]>({
+    queryKey: ["/api/testimonials?featured=true"],
   });
 
   const services = [
