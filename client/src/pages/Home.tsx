@@ -125,7 +125,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* About Section */}
       <section className="py-20 bg-muted/50">
         <div className="container mx-auto px-6">
@@ -155,7 +154,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Services Section */}
       <section className="py-20">
         <div className="container mx-auto px-6">
@@ -171,7 +169,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <Card key={index} className="service-card hover-lift cursor-pointer group bg-card border border-border/50" data-testid={`service-card-${index}`}>
-                <CardContent className="p-8">
+                <CardContent className="p-8 text-[#f5f6f7]">
                   <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/30 transition-colors">
                     <service.icon className="w-8 h-8 text-primary" />
                   </div>
@@ -202,7 +200,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Portfolio Preview */}
       <section className="py-20 bg-muted/50">
         <div className="container mx-auto px-6">
@@ -248,7 +245,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Testimonials */}
       <section className="py-20">
         <div className="container mx-auto px-6">
@@ -294,7 +290,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Call to Action */}
       <section className="py-20 bg-gradient-to-br from-primary/10 via-chart-2/10 to-chart-3/10">
         <div className="container mx-auto px-6 text-center">
