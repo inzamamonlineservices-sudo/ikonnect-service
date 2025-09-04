@@ -47,7 +47,7 @@ export default function ClientPortal() {
   // Mock authentication check - in real app this would be handled by auth system
   const isAuthenticated = true; // This would come from your auth context
   
-  const { data: projects, isLoading } = useQuery({
+  const { data: projects, isLoading } = useQuery<Project[]>({
     queryKey: ['/api/client/projects'],
     enabled: isAuthenticated
   });

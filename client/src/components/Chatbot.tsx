@@ -111,7 +111,7 @@ export function Chatbot() {
     return (
       <Button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 rounded-full w-14 h-14 shadow-lg bg-blue-600 hover:bg-blue-700"
+        className="fixed bottom-4 right-4 rounded-full w-14 h-14 shadow-lg bg-primary hover:bg-primary/90 text-foreground"
         data-testid="button-open-chat"
       >
         <MessageCircle className="w-6 h-6" />
@@ -121,13 +121,13 @@ export function Chatbot() {
 
   return (
     <Card className="fixed bottom-4 right-4 w-80 h-96 shadow-xl border-0 z-50">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 bg-blue-600 text-white">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 bg-primary text-primary-foreground">
         <CardTitle className="text-sm font-medium">AI Assistant</CardTitle>
         <Button 
           variant="ghost" 
           size="sm" 
           onClick={() => setIsOpen(false)}
-          className="text-white hover:bg-blue-700"
+          className="text-primary-foreground hover:bg-primary/90"
           data-testid="button-close-chat"
         >
           <X className="w-4 h-4" />
@@ -144,14 +144,14 @@ export function Chatbot() {
                 <div
                   className={`max-w-[80%] p-3 rounded-lg text-sm ${
                     message.role === 'user'
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-900'
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-muted text-muted-foreground'
                   }`}
                   data-testid={`message-${message.role}-${message.id}`}
                 >
                   {message.content}
                   {message.role === 'assistant' && message.conversationId && (
-                    <div className="flex gap-2 mt-2 pt-2 border-t border-gray-200">
+                    <div className="flex gap-2 mt-2 pt-2 border-t border-border">
                       <Button
                         size="sm"
                         variant="ghost"
@@ -177,11 +177,11 @@ export function Chatbot() {
             ))}
             {chatMutation.isPending && (
               <div className="flex justify-start">
-                <div className="bg-gray-100 text-gray-900 p-3 rounded-lg text-sm max-w-[80%]">
+                <div className="bg-muted text-muted-foreground p-3 rounded-lg text-sm max-w-[80%]">
                   <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                    <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                    <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                   </div>
                 </div>
               </div>

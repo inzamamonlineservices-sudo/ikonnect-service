@@ -54,28 +54,28 @@ export default function Admin() {
   const [activeTab, setActiveTab] = useState('analytics');
   
   // Analytics data
-  const { data: analyticsData } = useQuery({
+  const { data: analyticsData } = useQuery<any>({
     queryKey: ['/api/analytics/summary'],
     refetchInterval: 30000 // Refresh every 30 seconds
   });
 
   // CMS content data
-  const { data: cmsContent } = useQuery({
+  const { data: cmsContent } = useQuery<any[]>({
     queryKey: ['/api/cms/content']
   });
 
   // Clients data
-  const { data: clients } = useQuery({
+  const { data: clients } = useQuery<any[]>({
     queryKey: ['/api/admin/clients']
   });
 
   // Projects data
-  const { data: projects } = useQuery({
+  const { data: projects } = useQuery<any[]>({
     queryKey: ['/api/admin/projects']
   });
 
   // Chat conversations
-  const { data: chatData } = useQuery({
+  const { data: chatData } = useQuery<any[]>({
     queryKey: ['/api/chat/conversations']
   });
 
@@ -116,19 +116,19 @@ export default function Admin() {
           </TabsContent>
 
           <TabsContent value="cms" className="space-y-6">
-            <CMSDashboard content={cmsContent} />
+            <CMSDashboard content={cmsContent || []} />
           </TabsContent>
 
           <TabsContent value="clients" className="space-y-6">
-            <ClientsDashboard clients={clients} />
+            <ClientsDashboard clients={clients || []} />
           </TabsContent>
 
           <TabsContent value="projects" className="space-y-6">
-            <ProjectsDashboard projects={projects} />
+            <ProjectsDashboard projects={projects || []} />
           </TabsContent>
 
           <TabsContent value="chat" className="space-y-6">
-            <ChatDashboard conversations={chatData} />
+            <ChatDashboard conversations={chatData || []} />
           </TabsContent>
         </Tabs>
       </div>
