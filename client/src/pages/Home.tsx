@@ -16,6 +16,24 @@ import {
   CheckCircle,
   Star
 } from "lucide-react";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiTypescript,
+  SiPython,
+  SiPostgresql,
+  SiDocker,
+  SiAmazonaws,
+  SiVuedotjs,
+  SiAngular,
+  SiPhp,
+  SiRedis,
+  SiFastapi,
+  SiTailwindcss,
+  SiJavascript,
+  SiMongodb
+} from "react-icons/si";
 
 export default function Home() {
   const { data: portfolioItems = [] } = useQuery<PortfolioItem[]>({
@@ -69,6 +87,25 @@ export default function Home() {
     { label: "Happy Clients", value: "200+" },
     { label: "Years Experience", value: "5+" },
     { label: "Satisfaction Rate", value: "99%" }
+  ];
+
+  const technologies = [
+    { name: "React", icon: SiReact, color: "#61DAFB" },
+    { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+    { name: "Python", icon: SiPython, color: "#3776AB" },
+    { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
+    { name: "Docker", icon: SiDocker, color: "#2496ED" },
+    { name: "AWS", icon: SiAmazonaws, color: "#FF9900" },
+    { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
+    { name: "Angular", icon: SiAngular, color: "#DD0031" },
+    { name: "PHP", icon: SiPhp, color: "#777BB4" },
+    { name: "Redis", icon: SiRedis, color: "#DC382D" },
+    { name: "FastAPI", icon: SiFastapi, color: "#009688" },
+    { name: "TailwindCSS", icon: SiTailwindcss, color: "#06B6D4" },
+    { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+    { name: "MongoDB", icon: SiMongodb, color: "#47A248" }
   ];
 
   return (
@@ -202,6 +239,63 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
+      {/* Technologies Section */}
+      <section className="py-20 bg-gradient-to-br from-muted/30 via-background to-muted/30">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6" data-testid="technologies-title">
+              Technologies <span className="gradient-text">We Use</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto" data-testid="technologies-description">
+              We work with cutting-edge technologies to build modern, efficient web applications that deliver exceptional results.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 max-w-6xl mx-auto">
+            {technologies.map((tech, index) => (
+              <div 
+                key={index} 
+                className="group relative flex flex-col items-center p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:scale-105"
+                data-testid={`tech-${tech.name.toLowerCase().replace('.', '-')}`}
+              >
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <div className="relative flex flex-col items-center">
+                  <div className="w-12 h-12 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <tech.icon 
+                      className="w-10 h-10 text-muted-foreground group-hover:text-primary transition-colors duration-300" 
+                      style={{ color: tech.color }}
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-center text-foreground group-hover:text-primary transition-colors duration-300">
+                    {tech.name}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Additional Tech Badges */}
+          <div className="flex flex-wrap justify-center gap-3 mt-12 max-w-4xl mx-auto">
+            {[
+              "Machine Learning", "API Development", "Cloud Computing", "DevOps", 
+              "Microservices", "Real-time Analytics", "Data Visualization", "Mobile Development"
+            ].map((skill, index) => (
+              <Badge 
+                key={index}
+                variant="outline" 
+                className="px-4 py-2 bg-card/30 border-primary/20 text-muted-foreground hover:border-primary/40 hover:text-primary transition-all duration-300"
+                data-testid={`skill-${skill.toLowerCase().replace(' ', '-')}`}
+              >
+                {skill}
+              </Badge>
+            ))}
+          </div>
+        </div>
+      </section>
+      
       {/* Portfolio Preview */}
       <section className="py-20 bg-muted/50">
         <div className="container mx-auto px-6">
