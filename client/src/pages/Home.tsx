@@ -187,7 +187,7 @@ export default function Home() {
             {/* Custom Solutions Card */}
             <div className="group relative" data-testid="custom-solutions-card">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl transform group-hover:scale-105 transition-all duration-300"></div>
-              <div className="relative bg-card/90 backdrop-blur-sm border-2 border-primary/40 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group-hover:border-primary/60">
+              <div className="relative backdrop-blur-sm border-2 border-primary/40 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group-hover:border-primary/60 bg-[#f0f1f2]">
                 <div className="w-16 h-16 bg-primary/30 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/40 transition-colors">
                   <Lightbulb className="w-8 h-8 text-primary" />
                 </div>
