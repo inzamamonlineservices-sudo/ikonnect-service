@@ -3,6 +3,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { Chatbot } from "@/components/Chatbot";
 import { useEffect } from "react";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
@@ -17,6 +18,8 @@ import PortfolioDetail from "@/pages/PortfolioDetail";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import Contact from "@/pages/Contact";
+import Admin from "@/pages/Admin";
+import ClientPortal from "@/pages/ClientPortal";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -34,6 +37,8 @@ function Router() {
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/contact" component={Contact} />
+        <Route path="/admin" component={Admin} />
+        <Route path="/client-portal" component={ClientPortal} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
@@ -53,6 +58,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Router />
+        <Chatbot />
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>

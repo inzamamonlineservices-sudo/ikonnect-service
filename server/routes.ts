@@ -1,10 +1,15 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import { WebSocketServer, WebSocket } from "ws";
 import { storage } from "./storage";
 import { insertContactSchema, insertNewsletterSchema } from "@shared/schema";
 import { z } from "zod";
 
+import { registerApiRoutes } from "./api-routes";
+
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Register new API routes
+  registerApiRoutes(app);
   // Contact form submission
   app.post("/api/contact", async (req, res) => {
     try {
@@ -140,5 +145,59 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   const httpServer = createServer(app);
+  
+  // WebSocket server for real-time features
+  const wss = new WebSocketServer({ server: httpServer, path: '/ws' });
+  
+  wss.on('connection', (ws: WebSocket) => {
+    console.log('New WebSocket connection established');
+    
+    ws.on('message', (message: string) => {
+      try {
+        const data = JSON.parse(message.toString());
+        
+        // Handle different message types
+        switch (data.type) {
+          case 'subscribe':
+            // Subscribe to specific channels (e.g., project updates, chat)
+            (ws as any).channels = data.channels || [];
+            ws.send(JSON.stringify({ type: 'subscribed', channels: data.channels }));
+            break;
+            
+          case 'ping':
+            ws.send(JSON.stringify({ type: 'pong' }));
+            break;
+            
+          default:
+            console.log('Unknown WebSocket message type:', data.type);
+        }
+      } catch (error) {
+        console.error('WebSocket message error:', error);
+      }
+    });
+    
+    ws.on('close', () => {
+      console.log('WebSocket connection closed');
+    });
+    
+    // Send welcome message
+    ws.send(JSON.stringify({ 
+      type: 'welcome', 
+      message: 'Connected to Ikonnect Service real-time updates' 
+    }));
+  });
+  
+  // Broadcast function for real-time updates
+  (httpServer as any).broadcast = (channel: string, data: any) => {
+    wss.clients.forEach((client) => {
+      if (client.readyState === WebSocket.OPEN) {
+        const clientChannels = (client as any).channels || [];
+        if (clientChannels.includes(channel)) {
+          client.send(JSON.stringify({ type: 'broadcast', channel, data }));
+        }
+      }
+    });
+  };
+  
   return httpServer;
 }

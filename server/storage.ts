@@ -10,7 +10,17 @@ import {
   type BlogPost,
   type InsertBlogPost,
   type Testimonial,
-  type InsertTestimonial
+  type InsertTestimonial,
+  type CmsContent,
+  type InsertCmsContent,
+  type ClientProject,
+  type InsertClientProject,
+  type Client,
+  type InsertClient,
+  type AnalyticsEvent,
+  type InsertAnalyticsEvent,
+  type ChatConversation,
+  type InsertChatConversation
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 
@@ -45,6 +55,40 @@ export interface IStorage {
   getTestimonials(): Promise<Testimonial[]>;
   getFeaturedTestimonials(): Promise<Testimonial[]>;
   createTestimonial(testimonial: InsertTestimonial): Promise<Testimonial>;
+
+  // CMS Content
+  getCmsContent(): Promise<CmsContent[]>;
+  getCmsContentByKey(key: string): Promise<CmsContent | undefined>;
+  createCmsContent(content: InsertCmsContent): Promise<CmsContent>;
+  updateCmsContent(key: string, content: Partial<InsertCmsContent>): Promise<CmsContent>;
+
+  // Client Projects
+  getClientProjects(clientId?: string): Promise<ClientProject[]>;
+  getClientProject(id: string): Promise<ClientProject | undefined>;
+  createClientProject(project: InsertClientProject): Promise<ClientProject>;
+  updateClientProject(id: string, project: Partial<InsertClientProject>): Promise<ClientProject>;
+
+  // Clients
+  getClients(): Promise<Client[]>;
+  getClient(id: string): Promise<Client | undefined>;
+  getClientByEmail(email: string): Promise<Client | undefined>;
+  createClient(client: InsertClient): Promise<Client>;
+  updateClient(id: string, client: Partial<InsertClient>): Promise<Client>;
+
+  // Analytics
+  createAnalyticsEvent(event: InsertAnalyticsEvent): Promise<AnalyticsEvent>;
+  getAnalyticsEvents(startDate?: Date, endDate?: Date): Promise<AnalyticsEvent[]>;
+  getAnalyticsSummary(): Promise<{
+    totalPageViews: number;
+    uniqueVisitors: number;
+    topPages: { page: string; views: number; }[];
+    bounceRate: number;
+  }>;
+
+  // Chat
+  createChatConversation(conversation: InsertChatConversation): Promise<ChatConversation>;
+  getChatConversations(sessionId?: string): Promise<ChatConversation[]>;
+  updateChatSatisfaction(id: string, satisfaction: number): Promise<ChatConversation>;
 }
 
 export class MemStorage implements IStorage {
