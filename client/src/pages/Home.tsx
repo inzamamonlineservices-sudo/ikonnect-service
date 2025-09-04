@@ -170,7 +170,7 @@ export default function Home() {
             {services.map((service, index) => (
               <div key={index} className="group relative" data-testid={`service-card-${index}`}>
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl transform group-hover:scale-105 transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
-                <div className="relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group-hover:border-primary/30">
+                <div className="relative backdrop-blur-sm border border-border/50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group-hover:border-primary/30 text-[#151515] bg-[#f0f1f2]">
                   <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/30 transition-colors">
                     <service.icon className="w-8 h-8 text-primary" />
                   </div>
