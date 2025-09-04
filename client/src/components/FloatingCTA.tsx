@@ -108,10 +108,10 @@ export default function FloatingCTA() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
       {/* Chat Interface */}
       {isOpen && (
-        <Card className="mb-4 w-96 h-[500px] bg-card/95 backdrop-blur-sm border-primary/30 shadow-2xl">
+        <Card className="mb-4 w-96 h-[500px] bg-card border-primary/30 shadow-2xl">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <CardTitle className="text-lg text-primary">AI Assistant</CardTitle>
@@ -213,14 +213,16 @@ export default function FloatingCTA() {
       )}
       
       {/* Floating Chat Button */}
-      <Button
-        size="lg"
-        className="rounded-full w-14 h-14 glow-effect hover:scale-110 transition-all duration-300"
-        onClick={() => setIsOpen(!isOpen)}
-        data-testid="floating-cta-button"
-      >
-        <MessageCircle className="w-6 h-6" />
-      </Button>
+      <div className="w-14 h-14 flex-shrink-0">
+        <Button
+          size="lg"
+          className="rounded-full w-14 h-14 glow-effect hover:scale-110 transition-all duration-300"
+          onClick={() => setIsOpen(!isOpen)}
+          data-testid="floating-cta-button"
+        >
+          <MessageCircle className="w-6 h-6" />
+        </Button>
+      </div>
     </div>
   );
 }
