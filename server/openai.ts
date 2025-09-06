@@ -34,7 +34,7 @@ export async function generateChatResponse(
     };
 
     const response = await openai.chat.completions.create({
-      model: "gpt-4o", // the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
+      model: "gpt-4o", // Using gpt-4o as it's the most stable model currently available
       messages: [systemMessage, ...messages],
       max_tokens: 500,
       temperature: 0.7,
@@ -43,6 +43,7 @@ export async function generateChatResponse(
     return response.choices[0].message.content || "I apologize, but I'm unable to generate a response right now. Please try again or contact our team directly.";
   } catch (error) {
     console.error("OpenAI API error:", error);
+    console.error("Error details:", error?.message);
     throw new Error("Failed to generate chat response");
   }
 }

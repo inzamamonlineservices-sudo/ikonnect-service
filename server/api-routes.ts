@@ -1,6 +1,6 @@
 import type { Express } from "express";
 import { DatabaseStorage } from "./database-storage";
-import { generateChatResponse } from "./openai";
+import { generateChatResponse } from "./gemini";
 import { getSession, requireAdminAuth, requireClientAuth } from "./auth";
 import { 
   insertCmsContentSchema, 
