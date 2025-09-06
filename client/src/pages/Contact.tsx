@@ -97,10 +97,10 @@ export default function Contact() {
       link: "mailto:hello@ikonnectservice.com"
     },
     {
-      icon: Phone,
-      label: "Phone",
-      value: "+92 320 4199398",
-      link: "tel:+923204199398"
+      icon: Mail,
+      label: "Sales Email",
+      value: "sale@ikonnectservice.com",
+      link: "mailto:sale@ikonnectservice.com"
     },
     {
       icon: MapPin,
