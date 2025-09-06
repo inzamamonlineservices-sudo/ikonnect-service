@@ -58,11 +58,12 @@ export default function FloatingCTA() {
       };
       setMessages(prev => [...prev, assistantMessage]);
     },
-    onError: () => {
+    onError: (error: Error) => {
+      console.error("Chatbot error:", error);
       const errorMessage: ChatMessage = {
         id: `error-${Date.now()}`,
         role: 'assistant',
-        content: "I'm experiencing some technical difficulties. Please try again in a moment or contact our team directly for assistance.",
+        content: "I apologize for the technical issue. Let me try to help you in a different way. You can also contact our team directly at info@ikonnectservice.com or use our contact form for immediate assistance.",
         timestamp: new Date()
       };
       setMessages(prev => [...prev, errorMessage]);
