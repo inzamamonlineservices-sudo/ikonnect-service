@@ -39,14 +39,14 @@ export default function FloatingCTA() {
 
   const chatMutation = useMutation({
     mutationFn: async (userMessage: string) => {
-      const response = await apiRequest('/api/chat', 'POST', {
+      const response = await apiRequest('POST', '/api/chat', {
         message: userMessage,
         sessionId,
         context: {
           previousMessages: messages.slice(-5) // Send last 5 messages for context
         }
       });
-      return response;
+      return response.json();
     },
     onSuccess: (data: any) => {
       const assistantMessage: ChatMessage = {
@@ -71,10 +71,11 @@ export default function FloatingCTA() {
 
   const satisfactionMutation = useMutation({
     mutationFn: async ({ conversationId, satisfaction }: { conversationId: string; satisfaction: number }) => {
-      return apiRequest('/api/chat/feedback', 'POST', {
+      const response = await apiRequest('POST', '/api/chat/feedback', {
         conversationId,
         satisfaction
       });
+      return response.json();
     },
     onSuccess: () => {
       // Feedback recorded successfully
