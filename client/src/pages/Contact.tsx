@@ -99,8 +99,8 @@ export default function Contact() {
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      value: "+92 320 4199398",
+      link: "tel:+923204199398"
     },
     {
       icon: MapPin,
