@@ -78,11 +78,66 @@ export default function Home() {
         {/* Background with gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted"></div>
         
-        {/* 3D Animation Placeholder */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/20 rounded-full blur-xl animate-float"></div>
-          <div className="absolute top-3/4 right-1/4 w-24 h-24 bg-chart-2/20 rounded-full blur-xl animate-float-delayed"></div>
-          <div className="absolute top-1/2 right-1/3 w-16 h-16 bg-chart-3/20 rounded-full blur-xl animate-float-slow"></div>
+        {/* AI Website & Mobile App Mockups - Floating Objects */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {/* Website Mockup - Top Left */}
+          <div className="absolute top-[15%] left-[10%] animate-float">
+            <div className="w-48 h-32 md:w-64 md:h-40 rounded-lg overflow-hidden shadow-2xl transform rotate-12 hover:rotate-6 transition-transform duration-500">
+              <img 
+                src="/attached_assets/generated_images/AI_website_mockup_58b58355.png" 
+                alt="AI Website Mockup"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Mobile App Mockup - Top Right */}
+          <div className="absolute top-[20%] right-[8%] animate-float-delayed">
+            <div className="w-20 h-36 md:w-24 md:h-40 rounded-lg overflow-hidden shadow-2xl transform -rotate-12 hover:-rotate-6 transition-transform duration-500">
+              <img 
+                src="/attached_assets/generated_images/AI_mobile_app_mockup_c8edae00.png" 
+                alt="AI Mobile App Mockup"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Data Automation Interface - Left Middle */}
+          <div className="absolute top-[45%] left-[5%] animate-float-slow">
+            <div className="w-36 h-36 md:w-48 md:h-48 rounded-xl overflow-hidden shadow-2xl transform rotate-6 hover:rotate-3 transition-transform duration-500">
+              <img 
+                src="/attached_assets/generated_images/Data_automation_interface_82ac0b8f.png" 
+                alt="Data Automation Interface"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* AI Chatbot Interface - Bottom Right */}
+          <div className="absolute bottom-[15%] right-[12%] animate-float">
+            <div className="w-40 h-28 md:w-52 md:h-36 rounded-lg overflow-hidden shadow-2xl transform -rotate-8 hover:-rotate-4 transition-transform duration-500">
+              <img 
+                src="/attached_assets/generated_images/AI_chatbot_interface_364bd895.png" 
+                alt="AI Chatbot Interface"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Web Extraction Visualization - Bottom Left */}
+          <div className="absolute bottom-[25%] left-[15%] animate-float-delayed">
+            <div className="w-32 h-40 md:w-40 md:h-48 rounded-lg overflow-hidden shadow-2xl transform rotate-15 hover:rotate-8 transition-transform duration-500">
+              <img 
+                src="/attached_assets/generated_images/Web_extraction_visualization_8c52b824.png" 
+                alt="Web Extraction Visualization"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Additional Floating Elements for Visual Enhancement */}
+          <div className="absolute top-1/3 right-1/3 w-16 h-16 bg-primary/10 rounded-full blur-xl animate-float-slow"></div>
+          <div className="absolute bottom-1/3 left-1/3 w-12 h-12 bg-chart-3/10 rounded-full blur-xl animate-float"></div>
         </div>
         
         <div className="container mx-auto px-6 text-center relative z-10">
