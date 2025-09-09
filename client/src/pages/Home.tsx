@@ -16,11 +16,7 @@ import {
   CheckCircle,
   Star
 } from "lucide-react";
-import laptopMockup from "@assets/generated_images/Sleek_laptop_transparent_background_11a760ee.png";
-import smartphoneMockup from "@assets/generated_images/Modern_smartphone_transparent_background_6e882c34.png";
-import dashboardMockup from "@assets/generated_images/Glass_dashboard_panel_transparent_59dbd30b.png";
-import automationCardMockup from "@assets/generated_images/Abstract_automation_graph_card_2757a184.png";
-import chatbotMockup from "@assets/generated_images/Chatbot_interface_bubble_mockup_7f01164b.png";
+import heroMockup from "@assets/generated_images/Futuristic_digital_agency_hero_mockup_34a9026b.png";
 
 export default function Home() {
   const { data: portfolioItems = [] } = useQuery<PortfolioItem[]>({
@@ -124,65 +120,21 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Right Mockup - Floating Elements */}
+            {/* Right Mockup */}
             <div className="flex justify-center lg:justify-end relative">
-              <div className="relative w-full max-w-2xl h-[600px]">
-                {/* Dashboard Panel (Background Layer) */}
-                <div className="absolute top-16 left-8 w-80 h-60 animate-float-slow">
-                  <img 
-                    src={dashboardMockup}
-                    alt="Analytics Dashboard Interface"
-                    className="w-full h-full object-contain drop-shadow-xl opacity-90"
-                    data-testid="dashboard-mockup"
-                  />
-                </div>
-
-                {/* Laptop (Center-Front) */}
-                <div className="absolute top-32 left-16 w-72 h-48 animate-float z-10">
-                  <img 
-                    src={laptopMockup}
-                    alt="Modern Laptop"
-                    className="w-full h-full object-contain drop-shadow-2xl"
-                    data-testid="laptop-mockup"
-                  />
-                </div>
-
-                {/* Smartphone (Floating in Front) */}
-                <div className="absolute top-20 right-24 w-24 h-44 animate-float-delayed z-20">
-                  <img 
-                    src={smartphoneMockup}
-                    alt="Modern Smartphone"
-                    className="w-full h-full object-contain drop-shadow-2xl"
-                    data-testid="smartphone-mockup"
-                  />
-                </div>
-
-                {/* Automation Graph Card (Top-Right Orbit) */}
-                <div className="absolute top-8 right-8 w-32 h-32 animate-float-slow z-15">
-                  <img 
-                    src={automationCardMockup}
-                    alt="Automation Graph Interface"
-                    className="w-full h-full object-contain drop-shadow-xl"
-                    data-testid="automation-card-mockup"
-                  />
-                </div>
-
-                {/* Chatbot Bubble (Lower-Right Orbit) */}
-                <div className="absolute bottom-16 right-4 w-28 h-28 animate-float-delayed z-15">
-                  <img 
-                    src={chatbotMockup}
-                    alt="Chatbot Interface"
-                    className="w-full h-full object-contain drop-shadow-xl"
-                    data-testid="chatbot-mockup"
-                  />
-                </div>
+              <div className="relative w-full max-w-2xl">
+                <img 
+                  src={heroMockup}
+                  alt="Digital Agency Mockup - Floating futuristic objects including laptop, smartphone, dashboard, and UI elements"
+                  className="w-full h-auto object-contain drop-shadow-2xl"
+                  data-testid="hero-mockup"
+                />
                 
-                {/* Additional Floating Particles */}
+                {/* Floating animation effects */}
                 <div className="absolute inset-0 pointer-events-none">
-                  <div className="absolute top-1/4 left-1/4 w-12 h-12 bg-primary/20 rounded-full blur-xl animate-float"></div>
-                  <div className="absolute bottom-1/3 right-1/3 w-8 h-8 bg-chart-2/20 rounded-full blur-xl animate-float-delayed"></div>
-                  <div className="absolute top-2/3 left-1/3 w-6 h-6 bg-chart-3/20 rounded-full blur-xl animate-float-slow"></div>
-                  <div className="absolute top-1/6 right-1/2 w-4 h-4 bg-primary/30 rounded-full blur-md animate-float"></div>
+                  <div className="absolute top-1/4 left-1/4 w-16 h-16 bg-primary/10 rounded-full blur-xl animate-float"></div>
+                  <div className="absolute bottom-1/4 right-1/4 w-12 h-12 bg-chart-2/10 rounded-full blur-xl animate-float-delayed"></div>
+                  <div className="absolute top-1/2 right-1/6 w-8 h-8 bg-chart-3/10 rounded-full blur-xl animate-float-slow"></div>
                 </div>
               </div>
             </div>
