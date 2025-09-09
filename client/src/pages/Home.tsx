@@ -17,13 +17,6 @@ import {
   Star
 } from "lucide-react";
 
-// Import generated mockup images
-import dataAutomationMockup from "@assets/generated_images/Data_automation_dashboard_mockup_d05869dc.png";
-import webDevMockup from "@assets/generated_images/Web_development_mockup_b43f958f.png";
-import aiChatbotMockup from "@assets/generated_images/AI_chatbot_interface_mockup_6d6adb6e.png";
-import webExtractionMockup from "@assets/generated_images/Web_extraction_dashboard_mockup_182c7d09.png";
-import graphicDesignMockup from "@assets/generated_images/Graphic_design_workspace_mockup_470df233.png";
-
 export default function Home() {
   const { data: portfolioItems = [] } = useQuery<PortfolioItem[]>({
     queryKey: ["/api/portfolio?featured=true"],
@@ -81,121 +74,53 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background with gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted"></div>
         
-        {/* Subtle background particles */}
+        {/* 3D Animation Placeholder */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-float"></div>
-          <div className="absolute top-3/4 left-1/6 w-24 h-24 bg-chart-2/10 rounded-full blur-xl animate-float-delayed"></div>
-          <div className="absolute top-1/2 left-1/3 w-16 h-16 bg-chart-3/10 rounded-full blur-xl animate-float-slow"></div>
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/20 rounded-full blur-xl animate-float"></div>
+          <div className="absolute top-3/4 right-1/4 w-24 h-24 bg-chart-2/20 rounded-full blur-xl animate-float-delayed"></div>
+          <div className="absolute top-1/2 right-1/3 w-16 h-16 bg-chart-3/20 rounded-full blur-xl animate-float-slow"></div>
         </div>
         
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
-            {/* Left Content */}
-            <div className="space-y-8">
-              {/* Animated badge */}
-              <Badge variant="outline" className="mb-4 bg-primary/10 border-primary/20 text-primary w-fit" data-testid="hero-badge">
-                <div className="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></div>
-                Digital Innovation Leaders
-              </Badge>
-              
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight" data-testid="hero-title">
-                <span className="gradient-text">Transform</span> Your Business<br/>
-                With <span className="gradient-text">AI-Powered</span><br/>
-                Digital Solutions
-              </h1>
-              
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl" data-testid="hero-description">
-                From data automation to AI chatbots, we create cutting-edge digital experiences that drive growth and innovation for modern businesses.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row items-start gap-4">
-                <Button size="lg" className="glow-effect hover:scale-105 transition-all duration-300" asChild data-testid="hero-cta-primary">
-                  <Link href="/contact">Start Your Project</Link>
-                </Button>
-                <Button variant="outline" size="lg" className="flex items-center" data-testid="hero-cta-secondary">
-                  <Play className="w-5 h-5 mr-2" />
-                  Watch Demo
-                </Button>
-              </div>
-              
-              {/* Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8">
-                {stats.map((stat, index) => (
-                  <div key={index} className="text-left" data-testid={`stat-${index}`}>
-                    <div className="text-2xl md:text-3xl font-bold text-primary">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <div className="max-w-4xl mx-auto">
+            {/* Animated badge */}
+            <Badge variant="outline" className="mb-8 bg-primary/10 border-primary/20 text-primary" data-testid="hero-badge">
+              <div className="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></div>
+              Digital Innovation Leaders
+            </Badge>
+            
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight" data-testid="hero-title">
+              <span className="gradient-text">Transform</span> Your Business<br/>
+              With <span className="gradient-text">AI-Powered</span><br/>
+              Digital Solutions
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto" data-testid="hero-description">
+              From data automation to AI chatbots, we create cutting-edge digital experiences that drive growth and innovation for modern businesses.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+              <Button size="lg" className="glow-effect hover:scale-105 transition-all duration-300" asChild data-testid="hero-cta-primary">
+                <Link href="/contact">Start Your Project</Link>
+              </Button>
+              <Button variant="outline" size="lg" className="flex items-center" data-testid="hero-cta-secondary">
+                <Play className="w-5 h-5 mr-2" />
+                Watch Demo
+              </Button>
             </div>
-
-            {/* Right Side - Floating Mockup Images */}
-            <div className="relative h-full flex items-center justify-center lg:justify-end">
-              <div className="relative w-full max-w-2xl">
-                {/* Data Automation Mockup */}
-                <div className="absolute top-10 right-0 transform rotate-3 hover:rotate-6 transition-all duration-500 animate-float z-20">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 shadow-2xl border border-white/20">
-                    <img 
-                      src={dataAutomationMockup} 
-                      alt="Data Automation Dashboard" 
-                      className="w-64 md:w-80 rounded-lg shadow-lg"
-                      data-testid="mockup-data-automation"
-                    />
-                  </div>
+            
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center" data-testid={`stat-${index}`}>
+                  <div className="text-3xl font-bold text-primary">{stat.value}</div>
+                  <div className="text-muted-foreground">{stat.label}</div>
                 </div>
-
-                {/* Web Development Mockup */}
-                <div className="absolute top-32 right-20 transform -rotate-2 hover:rotate-1 transition-all duration-500 animate-float-delayed z-30">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 shadow-2xl border border-white/20">
-                    <img 
-                      src={webDevMockup} 
-                      alt="Web Development Interface" 
-                      className="w-60 md:w-72 rounded-lg shadow-lg"
-                      data-testid="mockup-web-dev"
-                    />
-                  </div>
-                </div>
-
-                {/* AI Chatbot Mockup */}
-                <div className="absolute top-20 left-0 transform rotate-1 hover:-rotate-2 transition-all duration-500 animate-float-slow z-10">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 shadow-2xl border border-white/20">
-                    <img 
-                      src={aiChatbotMockup} 
-                      alt="AI Chatbot Interface" 
-                      className="w-56 md:w-64 rounded-lg shadow-lg"
-                      data-testid="mockup-ai-chatbot"
-                    />
-                  </div>
-                </div>
-
-                {/* Web Extraction Mockup */}
-                <div className="absolute top-60 right-10 transform rotate-2 hover:rotate-5 transition-all duration-500 animate-float z-15">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 shadow-2xl border border-white/20">
-                    <img 
-                      src={webExtractionMockup} 
-                      alt="Web Extraction Dashboard" 
-                      className="w-58 md:w-68 rounded-lg shadow-lg"
-                      data-testid="mockup-web-extraction"
-                    />
-                  </div>
-                </div>
-
-                {/* Graphic Design Mockup */}
-                <div className="absolute top-80 left-10 transform -rotate-1 hover:rotate-2 transition-all duration-500 animate-float-delayed z-25">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 shadow-2xl border border-white/20">
-                    <img 
-                      src={graphicDesignMockup} 
-                      alt="Graphic Design Workspace" 
-                      className="w-60 md:w-70 rounded-lg shadow-lg"
-                      data-testid="mockup-graphic-design"
-                    />
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
