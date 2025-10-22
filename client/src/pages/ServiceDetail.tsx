@@ -15,7 +15,15 @@ import {
   Users,
   TrendingUp,
   Shield,
-  Zap
+  Zap,
+  BarChart3,
+  Activity,
+  Settings,
+  GitBranch,
+  RefreshCw,
+  FileJson,
+  Server,
+  Workflow
 } from "lucide-react";
 
 export default function ServiceDetail() {
@@ -323,14 +331,115 @@ export default function ServiceDetail() {
                 </Button>
               </div>
             </div>
-            <div className="relative">
-              <img 
-                src={service.heroImage} 
-                alt={service.name}
-                className="rounded-xl shadow-2xl"
-                data-testid="service-hero-image"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent rounded-xl"></div>
+            <div className="relative h-[500px]" data-testid="service-hero-visualization">
+              {/* Animated floating objects for data automation */}
+              {serviceId === 'data-automation' ? (
+                <div className="relative w-full h-full">
+                  {/* Central Database Icon */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                    <div className="w-32 h-32 bg-gradient-to-br from-primary to-chart-2 rounded-2xl flex items-center justify-center shadow-2xl animate-float">
+                      <Database className="w-16 h-16 text-primary-foreground" />
+                    </div>
+                  </div>
+
+                  {/* Floating Chart Icon - Top Left */}
+                  <div className="absolute top-12 left-12 animate-float-delayed">
+                    <div className="w-20 h-20 bg-gradient-to-br from-chart-2/80 to-chart-3/80 rounded-xl flex items-center justify-center shadow-xl backdrop-blur-sm">
+                      <BarChart3 className="w-10 h-10 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Floating Activity Icon - Top Right */}
+                  <div className="absolute top-20 right-16 animate-float-slow">
+                    <div className="w-16 h-16 bg-gradient-to-br from-chart-3/80 to-chart-4/80 rounded-xl flex items-center justify-center shadow-lg backdrop-blur-sm">
+                      <Activity className="w-8 h-8 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Floating Workflow Icon - Middle Left */}
+                  <div className="absolute top-1/3 left-8 animate-float">
+                    <div className="w-24 h-24 bg-gradient-to-br from-chart-4/80 to-chart-5/80 rounded-xl flex items-center justify-center shadow-xl backdrop-blur-sm">
+                      <Workflow className="w-12 h-12 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Floating Settings Icon - Middle Right */}
+                  <div className="absolute top-1/3 right-12 animate-float-delayed">
+                    <div className="w-20 h-20 bg-gradient-to-br from-primary/80 to-chart-2/80 rounded-xl flex items-center justify-center shadow-lg backdrop-blur-sm">
+                      <Settings className="w-10 h-10 text-white animate-spin-slow" />
+                    </div>
+                  </div>
+
+                  {/* Floating Server Icon - Bottom Left */}
+                  <div className="absolute bottom-16 left-20 animate-float-slow">
+                    <div className="w-18 h-18 bg-gradient-to-br from-chart-5/80 to-primary/80 rounded-xl flex items-center justify-center shadow-lg backdrop-blur-sm">
+                      <Server className="w-9 h-9 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Floating JSON Icon - Bottom Right */}
+                  <div className="absolute bottom-12 right-8 animate-float">
+                    <div className="w-16 h-16 bg-gradient-to-br from-chart-2/80 to-chart-3/80 rounded-xl flex items-center justify-center shadow-lg backdrop-blur-sm">
+                      <FileJson className="w-8 h-8 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Floating Refresh Icon - Bottom Center */}
+                  <div className="absolute bottom-24 left-1/2 -translate-x-1/2 animate-float-delayed">
+                    <div className="w-14 h-14 bg-gradient-to-br from-chart-3/80 to-chart-4/80 rounded-xl flex items-center justify-center shadow-lg backdrop-blur-sm">
+                      <RefreshCw className="w-7 h-7 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Floating GitBranch Icon - Top Center */}
+                  <div className="absolute top-8 left-1/2 -translate-x-1/2 animate-float-slow">
+                    <div className="w-16 h-16 bg-gradient-to-br from-chart-4/80 to-chart-5/80 rounded-xl flex items-center justify-center shadow-lg backdrop-blur-sm">
+                      <GitBranch className="w-8 h-8 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Connecting lines/paths to show data flow */}
+                  <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 250 250 Q 150 150 100 100" stroke="url(#gradient1)" strokeWidth="2" fill="none" strokeDasharray="5,5" className="animate-pulse">
+                      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1s" repeatCount="indefinite" />
+                    </path>
+                    <path d="M 250 250 Q 350 150 400 120" stroke="url(#gradient2)" strokeWidth="2" fill="none" strokeDasharray="5,5" className="animate-pulse">
+                      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.2s" repeatCount="indefinite" />
+                    </path>
+                    <path d="M 250 250 Q 100 250 80 200" stroke="url(#gradient3)" strokeWidth="2" fill="none" strokeDasharray="5,5" className="animate-pulse">
+                      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.5s" repeatCount="indefinite" />
+                    </path>
+                    <defs>
+                      <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
+                        <stop offset="100%" stopColor="hsl(var(--chart-2))" stopOpacity="0.8" />
+                      </linearGradient>
+                      <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="hsl(var(--chart-3))" stopOpacity="0.8" />
+                        <stop offset="100%" stopColor="hsl(var(--chart-4))" stopOpacity="0.8" />
+                      </linearGradient>
+                      <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="hsl(var(--chart-4))" stopOpacity="0.8" />
+                        <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  {/* Background glow effects */}
+                  <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+                  <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-chart-2/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+                </div>
+              ) : (
+                <div className="relative">
+                  <img 
+                    src={service.heroImage} 
+                    alt={service.name}
+                    className="rounded-xl shadow-2xl"
+                    data-testid="service-hero-image"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent rounded-xl"></div>
+                </div>
+              )}
             </div>
           </div>
         </div>

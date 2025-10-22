@@ -163,6 +163,10 @@
   .animate-float-slow {
     animation: float 8s ease-in-out infinite 4s;
   }
+
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+  }
 }
 
 @keyframes float {
@@ -171,5 +175,14 @@
   }
   50% {
     transform: translateY(-20px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
