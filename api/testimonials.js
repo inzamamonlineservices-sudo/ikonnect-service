@@ -5,7 +5,7 @@ const testimonialSamples = [
     id: 1,
     name: "Sarah Johnson",
     company: "TechStart Inc.",
-    role: "CEO",
+    position: "CEO",
     content:
       "Ikonnect transformed our digital presence completely. Their innovative approach and attention to detail exceeded our expectations.",
     rating: 5,
@@ -19,7 +19,7 @@ const testimonialSamples = [
     id: 2,
     name: "Michael Chen",
     company: "Global Solutions",
-    role: "CTO",
+    position: "CTO",
     content:
       "Outstanding work on our e-commerce platform. The team delivered beyond what we imagined possible.",
     rating: 5,
@@ -33,7 +33,7 @@ const testimonialSamples = [
     id: 3,
     name: "Emily Rodriguez",
     company: "Creative Agency",
-    role: "Creative Director",
+    position: "Creative Director",
     content:
       "Professional, creative, and results-driven. Ikonnect is our go-to partner for all digital projects.",
     rating: 5,
