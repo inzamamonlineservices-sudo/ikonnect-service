@@ -29,7 +29,10 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
-    const res = await fetch(queryKey.join("/") as string, {
+    const raw = queryKey.join("/") as string;
+    const base = (import.meta as any)?.env?.VITE_API_BASE_URL as string | undefined;
+    const url = base ? `${base}${raw}` : raw;
+    const res = await fetch(url, {
       credentials: "include",
     });
 
