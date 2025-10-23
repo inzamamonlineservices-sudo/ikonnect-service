@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { PortfolioItem } from "@shared/schema";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@components/ui/card";
+import { Badge } from "@components/ui/badge";
+import { Button } from "@components/ui/button";
+import { Input } from "@components/ui/input";
 import {
   Search,
   Filter,
@@ -25,17 +25,18 @@ export default function Portfolio() {
 
   const filters = [
     { id: "all", name: "All Projects", count: portfolioItems.length },
-    { id: "web-dev", name: "Web Development", count: portfolioItems.filter((item: PortfolioItem) => item.category === "web-dev").length },
-    { id: "automation", name: "Automation", count: portfolioItems.filter((item: PortfolioItem) => item.category === "automation").length },
-    { id: "ai", name: "AI Solutions", count: portfolioItems.filter((item: PortfolioItem) => item.category === "ai").length },
-    { id: "design", name: "Design", count: portfolioItems.filter((item: PortfolioItem) => item.category === "design").length }
+    { id: "web-dev", name: "Web Development", count: portfolioItems.filter((item: PortfolioItem) => (item.category || "").includes("web-dev")).length },
+    { id: "automation", name: "Automation", count: portfolioItems.filter((item: PortfolioItem) => (item.category || "").includes("automation")).length },
+    { id: "ai", name: "AI Solutions", count: portfolioItems.filter((item: PortfolioItem) => (item.category || "").includes("ai")).length },
+    { id: "design", name: "Design", count: portfolioItems.filter((item: PortfolioItem) => (item.category || "").includes("design")).length }
   ];
 
   const filteredItems = portfolioItems.filter((item: PortfolioItem) => {
-    const matchesFilter = activeFilter === "all" || item.category === activeFilter;
+    const matchesFilter = activeFilter === "all" || (item.category || "") === activeFilter;
+    const tags = Array.isArray((item as any).tags) ? (item as any).tags : [];
     const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+                         tags.some((tag: string) => tag.toLowerCase().includes(searchTerm.toLowerCase()));
     return matchesFilter && matchesSearch;
   });
 
@@ -144,11 +145,11 @@ export default function Portfolio() {
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between mb-2">
                       <Badge variant="secondary" className="capitalize">
-                        {item.category.replace('-', ' ')}
+                        {String(item.category || "project").replace('-', ' ')}
                       </Badge>
                       <div className="flex items-center text-muted-foreground text-sm">
                         <Calendar className="w-4 h-4 mr-1" />
-                        {item.year}
+                        {item.year || "2024"}
                       </div>
                     </div>
                     <h3 className="text-xl font-bold mb-2 text-card-foreground group-hover:text-primary transition-colors">
@@ -157,16 +158,15 @@ export default function Portfolio() {
                     <p className="text-muted-foreground mb-4 line-clamp-2">
                       {item.description}
                     </p>
-                    
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1 mb-4">
-                      {item.tags.slice(0, 3).map((tag: string, idx: number) => (
+                      {(Array.isArray(item.tags) ? item.tags : []).slice(0, 3).map((tag: string, idx: number) => (
                         <Badge key={idx} variant="outline" className="text-xs">
                           <Tag className="w-3 h-3 mr-1" />
                           {tag}
                         </Badge>
                       ))}
-                      {item.tags.length > 3 && (
+                      {Array.isArray(item.tags) && item.tags.length > 3 && (
                         <Badge variant="outline" className="text-xs">
                           +{item.tags.length - 3}
                         </Badge>
@@ -198,7 +198,7 @@ export default function Portfolio() {
               Showing {filteredItems.length} of {portfolioItems.length} projects
             </p>
             <Button variant="outline" size="lg" data-testid="load-more">
-              Load More Projects
+              Load More
             </Button>
           </div>
         )}
