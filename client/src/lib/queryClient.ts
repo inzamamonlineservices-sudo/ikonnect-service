@@ -30,9 +30,25 @@ export const getQueryFn: <T>(options: {
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
     const raw = queryKey.join("/") as string;
-    const base = (import.meta as any)?.env?.VITE_API_BASE_URL as string | undefined;
-    const url = base ? `${base}${raw}` : raw;
-    const res = await fetch(url, {
+    const env = (import.meta as any)?.env || {};
+    const base = env?.VITE_API_BASE_URL as string | undefined;
+
+    // Always resolve to an absolute URL in the browser using current origin.
+    // In dev, if a base is provided, use it; otherwise fall back to origin.
+    const isBrowser = typeof window !== "undefined";
+    const resolvedUrl = (() => {
+      // If raw is already absolute, use as-is
+      if (/^https?:\/\//i.test(raw)) return raw;
+      if (env?.PROD) {
+        return isBrowser ? new URL(raw, window.location.origin).href : raw;
+      }
+      if (base) {
+        return new URL(raw, base).href;
+      }
+      return isBrowser ? new URL(raw, window.location.origin).href : raw;
+    })();
+
+    const res = await fetch(resolvedUrl, {
       credentials: "include",
     });
 
