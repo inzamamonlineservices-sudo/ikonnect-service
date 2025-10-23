@@ -300,7 +300,7 @@ export default function ServiceDetail() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted"></div>
+        <div className="absolute inset-0 bg-[#ffffff]"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -330,7 +330,7 @@ export default function ServiceDetail() {
                 className="rounded-xl shadow-2xl"
                 data-testid="service-hero-image"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent rounded-xl"></div>
+              <div className="absolute inset-0 rounded-xl hidden"></div>
             </div>
           </div>
         </div>

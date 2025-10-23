@@ -90,7 +90,7 @@ export default function About() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted"></div>
+        <div className="absolute inset-0 bg-[#ffffff]"></div>
         
         {/* 3D Animation Placeholder */}
         <div className="absolute inset-0 pointer-events-none">

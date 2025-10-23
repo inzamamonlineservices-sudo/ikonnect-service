@@ -132,7 +132,7 @@ export default function PortfolioDetail() {
                 className="rounded-xl shadow-2xl w-full"
                 data-testid="project-hero-image"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent rounded-xl"></div>
+              <div className="absolute inset-0 rounded-xl hidden"></div>
             </div>
           </div>
         </div>
