@@ -7,6 +7,8 @@ import { seedDatabaseIfEmpty } from "./seed";
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+// Ensure Express env matches NODE_ENV to avoid dev HMR in production
+app.set("env", process.env.NODE_ENV || app.get("env"));
 
 app.use((req, res, next) => {
   const start = Date.now();
@@ -58,7 +60,7 @@ app.use((req, res, next) => {
 
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
-  if (app.get("env") === "development") {
+  if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
