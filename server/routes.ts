@@ -63,8 +63,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const items = featured === 'true' 
         ? await storage.getFeaturedPortfolioItems()
         : await storage.getPortfolioItems();
+      console.log('Fetched portfolio items:', items);
       res.json(items);
     } catch (error) {
+      console.error('Error fetching portfolio items:', error);
       res.status(500).json({ 
         success: false, 
         message: "Failed to fetch portfolio items" 
@@ -77,6 +79,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { id } = req.params;
       const item = await storage.getPortfolioItem(id);
+      console.log(`Fetched portfolio item ${id}:`, item);
       if (!item) {
         res.status(404).json({ 
           success: false, 
@@ -86,6 +89,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       res.json(item);
     } catch (error) {
+      console.error(`Error fetching portfolio item ${req.params.id}:`, error);
       res.status(500).json({ 
         success: false, 
         message: "Failed to fetch portfolio item" 
@@ -100,8 +104,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const posts = category 
         ? await storage.getBlogPostsByCategory(category as string)
         : await storage.getPublishedBlogPosts();
+      console.log('Fetched blog posts:', posts);
       res.json(posts);
     } catch (error) {
+      console.error('Error fetching blog posts:', error);
       res.status(500).json({ 
         success: false, 
         message: "Failed to fetch blog posts" 
@@ -114,6 +120,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { slug } = req.params;
       const post = await storage.getBlogPost(slug);
+      console.log(`Fetched blog post ${slug}:`, post);
       if (!post) {
         res.status(404).json({ 
           success: false, 
@@ -123,6 +130,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       res.json(post);
     } catch (error) {
+      console.error(`Error fetching blog post ${req.params.slug}:`, error);
       res.status(500).json({ 
         success: false, 
         message: "Failed to fetch blog post" 
@@ -137,8 +145,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const testimonials = featured === 'true'
         ? await storage.getFeaturedTestimonials()
         : await storage.getTestimonials();
+      console.log('Fetched testimonials:', testimonials);
       res.json(testimonials);
     } catch (error) {
+      console.error('Error fetching testimonials:', error);
       res.status(500).json({ 
         success: false, 
         message: "Failed to fetch testimonials" 
