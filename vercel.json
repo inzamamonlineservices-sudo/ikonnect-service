@@ -8,7 +8,7 @@
     }
   ],
   "functions": {
-    "api/index.js": {
+    "dist/index.js": {
       "runtime": "nodejs20.x",
       "maxDuration": 30
     }
