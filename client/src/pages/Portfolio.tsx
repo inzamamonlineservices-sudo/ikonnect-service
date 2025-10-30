@@ -19,7 +19,7 @@ export default function Portfolio() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
 
-  const { data: portfolioItems = [], isLoading } = useQuery<PortfolioItem[]>({
+  const { data: portfolioItems = [], isLoading, isError, error } = useQuery<PortfolioItem[]>({
     queryKey: ["/api/portfolio"],
   });
 
@@ -47,6 +47,18 @@ export default function Portfolio() {
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
             <p className="text-muted-foreground">Loading portfolio...</p>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="min-h-screen py-20">
+        <div className="container mx-auto px-6 text-center">
+          <h1 className="text-4xl font-bold mb-4">Error</h1>
+          <p className="text-muted-foreground mb-8">There was an error fetching the portfolio data.</p>
+          {error && <p className="text-red-500">{error.message}</p>}
         </div>
       </div>
     );
