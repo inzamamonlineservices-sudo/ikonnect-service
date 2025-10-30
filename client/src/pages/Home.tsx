@@ -74,9 +74,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background with gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted"></div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
         
         {/* 3D Animation Placeholder */}
         <div className="absolute inset-0 pointer-events-none">
