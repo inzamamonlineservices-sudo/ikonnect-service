@@ -5,6 +5,11 @@ import { randomUUID } from 'crypto';
 async function seed() {
   console.log('Seeding database...');
 
+  // Clear existing data
+  await db.delete(portfolioItems);
+  await db.delete(blogPosts);
+  await db.delete(testimonials);
+
   // Sample portfolio items
   const portfolioSamples = [
     {
