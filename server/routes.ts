@@ -1,7 +1,9 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { WebSocketServer, WebSocket } from "ws";
-import { storage } from "./storage";
+import { DatabaseStorage } from "./database-storage";
+
+const storage = new DatabaseStorage();
 import { insertContactSchema, insertNewsletterSchema } from "@shared/schema";
 import { z } from "zod";
 
